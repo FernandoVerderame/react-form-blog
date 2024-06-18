@@ -1,8 +1,9 @@
-// Importo lo style del main, l'array dei posts e la Post Card
+// Importo lo style del main, l'array dei posts, la Post Card ed il Form
 import PostCard from '../Card/PostCard';
 import mainStyle from './Main.module.css';
 import posts from '../../data/posts.js';
 import Carousel from '../Carousel/Carousel.jsx';
+import Form from '../Form/Form.jsx';
 
 const Main = ({ selectedTag }) => {
 
@@ -13,6 +14,8 @@ const Main = ({ selectedTag }) => {
     return (
         <>
             <main className={mainStyle.mainSec}>
+
+                <Form />
 
                 <Carousel />
 
