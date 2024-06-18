@@ -1,4 +1,4 @@
-// Importo lo style del Form
+// Importo lo style del Form, l'icona, la PostCard e lo useState
 import { useState } from 'react';
 import formStyle from './Form.module.css';
 import { IoMdClose as Delete } from "react-icons/io";
@@ -6,6 +6,7 @@ import PostCard from '../Card/PostCard';
 
 const Form = () => {
 
+    // Post di default
     const defaultPostData = {
         title: '',
         image: '',
@@ -14,10 +15,13 @@ const Form = () => {
         tags: ['html', 'css']
     }
 
+    // useState dei nuovi Posts
     const [posts, setPosts] = useState([]);
 
+    // useState del singolo nuovo Post
     const [postData, setPostData] = useState(defaultPostData);
 
+    // Submit del Form
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -25,22 +29,33 @@ const Form = () => {
         setPostData(defaultPostData);
     }
 
+    // Rimozione di un Post
     const removePost = (indexToDelete) => {
         setPosts(array => array.filter((_, i) => i !== indexToDelete));
     }
 
+    // Update del Post
     const changePostData = (key, newValue) => {
         setPostData(data => ({ ...data, [key]: newValue }));
     }
 
     return (
         <>
+            {/* Form Card */}
             <div className={formStyle.cardForm}>
+
+                {/* Card Title */}
                 <div className={formStyle.cardTitle}>
                     <h3>Creo un nuovo Post</h3>
                 </div>
+
+                {/* Card Body */}
                 <div className={formStyle.cardBody}>
+
+                    {/* Form */}
                     <form onSubmit={handleSubmit}>
+
+                        {/* Input Title */}
                         <div className={formStyle.cardInput}>
                             <label htmlFor="title">Titolo</label>
                             <input
@@ -51,6 +66,8 @@ const Form = () => {
                                 onChange={(e) => changePostData('title', e.target.value)}
                             />
                         </div>
+
+                        {/* Input Image */}
                         <div className={formStyle.cardInput}>
                             <label htmlFor="image">URL Immagine</label>
                             <input
@@ -61,6 +78,8 @@ const Form = () => {
                                 onChange={(e) => changePostData('image', e.target.value)}
                             />
                         </div>
+
+                        {/* Input Content */}
                         <div className={formStyle.cardInput}>
                             <label htmlFor="content">Content</label>
                             <textarea
